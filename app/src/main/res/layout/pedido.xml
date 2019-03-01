@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Bacground"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textFacturar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Facturar"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1" />
+
+        <TextView
+            android:id="@+id/textdia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dia: "
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintRight_toLeftOf="@+id/spinner2"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toBottomOf="@+id/textclientefatc"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="117dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_constraintRight_creator="1"
+            android:layout_marginStart="90dp"
+            android:layout_marginEnd="90dp"
+            app:layout_constraintRight_toRightOf="@+id/btnTerminar"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textdia" />
+
+        <TextView
+            android:id="@+id/textclientefatc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cliente:"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/spinner3"
+            android:layout_marginStart="10dp"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/spinner3" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/spinner4"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="37dp" />
+
+        <TextView
+            android:id="@+id/textFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13/02/2019"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/btnConsultar"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="22dp" />
+
+        <TextView
+            android:id="@+id/textProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Producto: "
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/spinner4"
+            android:layout_marginStart="7dp"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/spinner4" />
+
+        <Spinner
+            android:id="@+id/spinner4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/editCantidad"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="23dp" />
+
+        <Button
+            android:id="@+id/btnConsultar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radioustext"
+            android:text="Consultar"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold|italic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_constraintRight_creator="1"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/spinner2"
+            tools:layout_constraintLeft_creator="1" />
+
+        <EditText
+            android:id="@+id/editCantidad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Cantidad"
+            android:inputType="number"
+            app:layout_constraintRight_toLeftOf="@+id/btnAgregar"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/check_facturado"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="11dp"
+            app:layout_constraintLeft_toLeftOf="@+id/spinner4" />
+
+        <TextView
+            android:id="@+id/textnumfact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Factura #: 1"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/checkCerrado"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintRight_toRightOf="@+id/checkCerrado"
+            android:layout_marginBottom="19dp" />
+
+        <Button
+            android:id="@+id/btnAgregar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radioustext"
+            android:text="Agregar"
+            android:textColor="@android:color/background_light"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/btnLista"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="7dp" />
+
+        <Button
+            android:id="@+id/btnLista"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radioustext"
+            android:text="Lista"
+            android:textColor="@android:color/background_light"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/btnTerminar"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="14dp" />
+
+        <Button
+            android:id="@+id/btnTerminar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/rouden"
+            android:text="Finalizar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1" />
+
+        <CheckBox
+            android:id="@+id/check_facturado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Facturado"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_constraintTop_creator="1"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="@+id/btnAgregar" />
+
+        <CheckBox
+            android:id="@+id/checkCerrado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cerrado"
+            android:layout_marginRight="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintTop_creator="1"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="@+id/btnAgregar" />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>
