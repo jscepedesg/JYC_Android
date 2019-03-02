@@ -33,6 +33,8 @@
         </activity>
         <activity android:name=".Cliente_Int">
         </activity>
+        <activity android:name=".Cliente_lista_clientes">
+        </activity>
     </application>
 
 </manifest>

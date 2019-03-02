@@ -1,6 +1,7 @@
 package sebastian.ing.jyc;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,9 +19,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-import sebastian.ing.jyc.Estructuras.Cliente;
 import sebastian.ing.jyc.Estructuras.Cliente_provicional;
-import sebastian.ing.jyc.Estructuras.Producto;
 import sebastian.ing.jyc.Sockets.MensajeEnaviar;
 import sebastian.ing.jyc.Sockets.Paquete_envio_peticion;
 import sebastian.ing.jyc.Utilidades.Utilidades;
@@ -188,5 +187,11 @@ public class Cliente_Int extends AppCompatActivity
         prueba_conexion=Servidor.getPruebaConexion();
 
         return prueba_conexion;
+    }
+
+    public void setListaClientes(View view)
+    {
+        Intent i = new Intent(this, Cliente_lista_clientes.class);
+        startActivity(i);
     }
 }
