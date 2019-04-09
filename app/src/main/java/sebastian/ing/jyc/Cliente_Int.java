@@ -1,5 +1,6 @@
 package sebastian.ing.jyc;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -124,8 +125,8 @@ public class Cliente_Int extends AppCompatActivity
 
         while (cursor.moveToNext())
         {
-            clienteArralist.add(new Cliente_provicional(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),
-                    cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getInt(7)));
+            clienteArralist.add(new Cliente_provicional(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),
+                    cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getInt(8)));
             Log.d("Base de datos Cliente",cursor.getInt(0)+" "+cursor.getString(1)+" "+cursor.getInt(2)+" "+cursor.getString(3)
                     +" "+cursor.getString(4)+" "+cursor.getString(5)+" "+cursor.getString(6)+" "+cursor.getInt(7));
         }
@@ -193,5 +194,7 @@ public class Cliente_Int extends AppCompatActivity
     {
         Intent i = new Intent(this, Cliente_lista_clientes.class);
         startActivity(i);
+        finish();
     }
+
 }

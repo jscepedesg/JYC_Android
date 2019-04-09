@@ -1,11 +1,14 @@
 package sebastian.ing.jyc.Estructuras;
 
+import java.io.Serializable;
+
 /**
  * Created by Usuario on 18/02/2019.
  */
 
-public class Cliente_provicional
+public class Cliente_provicional implements Serializable
 {
+    private int id_c_p;
     private String nom_r_p;
     private String nom_c_p;
     private String apel_c_p;
@@ -14,6 +17,20 @@ public class Cliente_provicional
     private String correo_p;
     private String dia_p;
     private int num_ruta_p;
+
+    public Cliente_provicional(int id_c_p, String nom_r_p,String nom_c_p ,String apel_c_p,String dire_c_p,String tele_p,String correo_p,String dia_p, int num_ruta_p)
+    {
+        this.id_c_p=id_c_p;
+        this.nom_r_p=nom_r_p;
+        this.nom_c_p=nom_c_p;
+        this.apel_c_p=apel_c_p;
+        this.dire_c_p=dire_c_p;
+        this.tele_p=tele_p;
+        this.correo_p=correo_p;
+        this.dia_p=dia_p;
+        this.num_ruta_p=num_ruta_p;
+
+    }
 
     public Cliente_provicional(String nom_r_p,String nom_c_p ,String apel_c_p,String dire_c_p,String tele_p,String correo_p,String dia_p, int num_ruta_p)
     {
@@ -91,4 +108,8 @@ public class Cliente_provicional
     public int getNum_ruta_p() {
         return num_ruta_p;
     }
+
+    public int getId_c_p() {return id_c_p;}
+
+    public void setId_c_p(int id_c_p) {this.id_c_p = id_c_p;}
 }
