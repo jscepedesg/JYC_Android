@@ -6,6 +6,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import sebastian.ing.jyc.crear_clientes.Cliente_Int;
+import sebastian.ing.jyc.vistaBasededatos.Vista_Base_Datos;
+
 /**
  * Created by Usuario on 3/02/2019.
  */
@@ -43,6 +46,12 @@ public class Inicio extends AppCompatActivity
         startActivity(i);
     }
 
+    public void setVistaBaseDatos(View view)
+    {
+        Intent i = new Intent(this, Vista_Base_Datos.class);
+        startActivity(i);
+    }
+
     public void alerta(String cadena, int num)
     {
         //se prepara la alerta creando nueva instancia
@@ -59,6 +68,14 @@ public class Inicio extends AppCompatActivity
         //mostramos el dialogBuilder
         dialogBuilder.create().show();
 
+    }
+
+    public void setCerrarSesion(View view)
+    {
+        MainActivity.setCambiarEstadoBoton(Inicio.this,false);
+        Intent i = new Intent(Inicio.this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
 }

@@ -1,4 +1,4 @@
-package sebastian.ing.jyc;
+package sebastian.ing.jyc.crear_clientes;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,10 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import sebastian.ing.jyc.Utilidades.ConexionSQLiteHelper;
 import sebastian.ing.jyc.Estructuras.Cliente_provicional;
+import sebastian.ing.jyc.R;
 import sebastian.ing.jyc.Utilidades.Utilidades;
-
-import static sebastian.ing.jyc.R.layout.cliente;
 
 /**
  * Created by Usuario on 4/03/2019.
@@ -20,7 +20,7 @@ import static sebastian.ing.jyc.R.layout.cliente;
 public class Cliente_lista_clientes_detalle extends AppCompatActivity
 {
     private TextView[] text;
-    private ConexionSQLiteHelper  conn1;
+    private ConexionSQLiteHelper conn1;
     private int id_cliente_provicional;
 
     protected void onCreate(Bundle savedInstanceState) {

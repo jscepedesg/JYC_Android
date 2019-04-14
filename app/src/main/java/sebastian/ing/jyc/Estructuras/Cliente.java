@@ -1,6 +1,8 @@
 package sebastian.ing.jyc.Estructuras;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable {
 
 	private int id_c;
 	private String nom_r;

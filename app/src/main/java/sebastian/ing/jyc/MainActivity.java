@@ -1,37 +1,41 @@
 package sebastian.ing.jyc;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.annotation.BoolRes;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
-import java.io.DataOutputStream;
-import java.net.Socket;
 import java.util.ArrayList;
 
 import sebastian.ing.jyc.Estructuras.Cliente;
 import sebastian.ing.jyc.Estructuras.Producto;
 import sebastian.ing.jyc.Estructuras.Vendedor;
 import sebastian.ing.jyc.Sockets.MensajeEnaviar;
+import sebastian.ing.jyc.Sockets.Servidor;
+import sebastian.ing.jyc.Utilidades.ConexionSQLiteHelper;
 import sebastian.ing.jyc.Utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity {
 
     private String usuario, contraseña;
     private EditText nom,contra;
-    private ConexionSQLiteHelper  conn1;
+    private ConexionSQLiteHelper conn1;
     private boolean prueba_conexion;
+    private RadioButton RBSesion;
+    private boolean estadoradioBtn;
+    private static final String STRING_PREFERENCES="estado.verificacion";
+    private static final String PREFERENCES_ESTADO_BOTON="estado.boton.sesion";
+
 
     public MainActivity()
     {
@@ -45,8 +49,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(setOptenerEstadoBoton())
+        {
+            Intent i = new Intent(this, Inicio.class);
+            startActivity(i);
+            finish();
+        }
         nom=(EditText)findViewById(R.id.nombre);
         contra=(EditText)findViewById(R.id.contraseña);
+        RBSesion=(RadioButton) findViewById(R.id.RBSesion);
+
+        estadoradioBtn=RBSesion.isChecked();
+
+        RBSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                if (estadoradioBtn)
+                {
+                    RBSesion.setChecked(false);
+                }
+                estadoradioBtn=RBSesion.isChecked();
+            }
+        });
 
 
         ConexionSQLiteHelper  conn = new ConexionSQLiteHelper(this, Utilidades.DATABASE_NAME,null,Utilidades.DATABASE_VERSION);
@@ -76,8 +101,10 @@ public class MainActivity extends AppCompatActivity {
                 if (nom.getText().toString().equals(usuario) && contra.getText().toString().equals(contraseña)
                         || nom.getText().toString().equalsIgnoreCase(cursor.getString(1)) && contra.getText().toString().equalsIgnoreCase(cursor.getString(0)))
                 {
+                    setGuardarEstadoBoton();
                     Intent i = new Intent(this, Inicio.class);
                     startActivity(i);
+                    finish();
                 }
                 else
                 {
@@ -272,5 +299,22 @@ public class MainActivity extends AppCompatActivity {
             alerta("Error! Verifique la conexion",1);
             e.getMessage();
         }
+    }
+
+    public void setGuardarEstadoBoton()
+    {
+        SharedPreferences preferences = getSharedPreferences(STRING_PREFERENCES,MODE_PRIVATE);
+        preferences.edit().putBoolean(PREFERENCES_ESTADO_BOTON,RBSesion.isChecked()).apply();
+    }
+    public boolean setOptenerEstadoBoton()
+    {
+        SharedPreferences preferences = getSharedPreferences(STRING_PREFERENCES,MODE_PRIVATE);
+        return preferences.getBoolean(PREFERENCES_ESTADO_BOTON,false);
+    }
+
+    public static void setCambiarEstadoBoton(Context c,boolean b)
+    {
+        SharedPreferences preferences = c.getSharedPreferences(STRING_PREFERENCES,MODE_PRIVATE);
+        preferences.edit().putBoolean(PREFERENCES_ESTADO_BOTON,b).apply();
     }
 }

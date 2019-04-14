@@ -1,4 +1,4 @@
-package sebastian.ing.jyc;
+package sebastian.ing.jyc.vistaBasededatos;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,65 +10,71 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Toast;
 import android.widget.SearchView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
+import sebastian.ing.jyc.Estructuras.Cliente;
 import sebastian.ing.jyc.Estructuras.Cliente_provicional;
 import sebastian.ing.jyc.R;
+import sebastian.ing.jyc.Utilidades.ConexionSQLiteHelper;
 import sebastian.ing.jyc.Utilidades.Utilidades;
+import sebastian.ing.jyc.crear_clientes.Cliente_lista_clientes;
+import sebastian.ing.jyc.crear_clientes.Cliente_lista_clientes_detalle;
 
 /**
- * Created by Usuario on 1/03/2019.
+ * Created by Usuario on 10/04/2019.
  */
 
-public class Cliente_lista_clientes extends AppCompatActivity
+public class Vista_BD_Cliente extends AppCompatActivity
 {
-    private SearchView searchVieww;
-    private ListView listView;
-    private ArrayList<String> listaInformacion;
-    private ArrayList<Cliente_provicional> listaCliente;
+    private SearchView searchView2;
+    private ListView listView2;
+    private ArrayList<String> listaInformacion2;
+    private ArrayList<Cliente> listaCliente;
     private ConexionSQLiteHelper conn;
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cliente_lista_clientes);
+        setContentView(R.layout.vista_bd_clientes);
 
         conn = new ConexionSQLiteHelper(this, Utilidades.DATABASE_NAME,null,Utilidades.DATABASE_VERSION);
-        searchVieww = (SearchView) findViewById(R.id.busquedadSearch);
-        listView = (ListView) findViewById(R.id.listView_Clientes);
-
+        searchView2 = (SearchView) findViewById(R.id.search_vista_cliente);
+        listView2 = (ListView) findViewById(R.id.listview_vista_cliente);
 
         setConsultarListaCLientes();
-        final ArrayAdapter adaptador= new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaInformacion);
-        listView.setAdapter(adaptador);
+        final ArrayAdapter adaptador= new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaInformacion2);
+        listView2.setAdapter(adaptador);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
 
                 String info= "Nombre razon social: "+listaCliente.get(pos).getNom_r()+"\n";
                 info+= "Nombre cliente: "+listaCliente.get(pos).getNom_c()+" "+listaCliente.get(pos).getApel_c()+"\n";
                 info+="Telefono: "+listaCliente.get(pos).getTele()+"\n";
+                info+="Dirección: "+listaCliente.get(pos).getDire_c()+"\n";
+                info+="Dia de atención: "+listaCliente.get(pos).getDia()+"\n";
+                info+="Id: "+listaCliente.get(pos).getId_c()+"\n";
 
                 Toast.makeText(getApplicationContext(),info,Toast.LENGTH_LONG).show();
 
-                Cliente_provicional cliente_provicional = listaCliente.get(pos);
-
-                Intent intent = new Intent(Cliente_lista_clientes.this,Cliente_lista_clientes_detalle.class);
+                /*Cliente cliente = listaCliente.get(pos);
+                //Modificar
+                Intent intent = new Intent(Vista_BD_Cliente.this,Cliente_lista_clientes_detalle.class);
                 Bundle bundle= new Bundle();
-                bundle.putSerializable("cliente",cliente_provicional);
+                bundle.putSerializable("cliente2",cliente);
                 intent.putExtras(bundle);
                 startActivity(intent);
-                finish();
+                finish();*/
 
 
             }
         });
 
-
-        searchVieww.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView2.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String text) {
                 return false;
@@ -81,18 +87,17 @@ public class Cliente_lista_clientes extends AppCompatActivity
                 return false;
             }
         });
-
     }
 
     private void setConsultarListaCLientes()
     {
         SQLiteDatabase db = conn.getReadableDatabase();
-        listaCliente = new ArrayList<Cliente_provicional>();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+Utilidades.TABLA_CLIENTE_PROVICIONAL,null);
+        listaCliente = new ArrayList<Cliente>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Utilidades.TABLA_CLIENTE,null);
 
         while (cursor.moveToNext())
         {
-            listaCliente.add(new Cliente_provicional(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),
+            listaCliente.add(new Cliente(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),
                     cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getInt(8)));
 
             Log.d("Base de datos Cliente",cursor.getInt(0)+" "+cursor.getString(1)+" "+cursor.getInt(2)+" "+cursor.getString(3)
@@ -106,18 +111,11 @@ public class Cliente_lista_clientes extends AppCompatActivity
 
     private void setObtenerLista()
     {
-        listaInformacion = new ArrayList<String>();
+        listaInformacion2 = new ArrayList<String>();
 
         for (int i=0;i<listaCliente.size();i++)
         {
-            listaInformacion.add(listaCliente.get(i).getNom_r()+" - "+listaCliente.get(i).getNom_c()+" "+listaCliente.get(i).getApel_c());
+            listaInformacion2.add(listaCliente.get(i).getNom_r()+" - "+listaCliente.get(i).getNom_c()+" "+listaCliente.get(i).getApel_c());
         }
-    }
-
-    public void setVolverACrearClientes(View view)
-    {
-        Intent i = new Intent(this, Cliente_Int.class);
-        startActivity(i);
-        finish();
     }
 }

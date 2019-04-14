@@ -1,6 +1,5 @@
-package sebastian.ing.jyc;
+package sebastian.ing.jyc.crear_clientes;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,7 +19,10 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
+import sebastian.ing.jyc.Utilidades.ConexionSQLiteHelper;
 import sebastian.ing.jyc.Estructuras.Cliente_provicional;
+import sebastian.ing.jyc.R;
+import sebastian.ing.jyc.Sockets.Servidor;
 import sebastian.ing.jyc.Sockets.MensajeEnaviar;
 import sebastian.ing.jyc.Sockets.Paquete_envio_peticion;
 import sebastian.ing.jyc.Utilidades.Utilidades;
@@ -32,7 +34,7 @@ import sebastian.ing.jyc.Utilidades.Utilidades;
 public class Cliente_Int extends AppCompatActivity
 {
     private Spinner combodias;
-    private ConexionSQLiteHelper  conn1;
+    private ConexionSQLiteHelper conn1;
     private EditText[] datos = new EditText[7];
     private TextView tamaño;
     private ArrayList<Cliente_provicional> clienteArralist;

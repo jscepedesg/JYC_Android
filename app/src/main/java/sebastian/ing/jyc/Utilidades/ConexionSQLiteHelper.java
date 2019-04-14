@@ -1,4 +1,4 @@
-package sebastian.ing.jyc;
+package sebastian.ing.jyc.Utilidades;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

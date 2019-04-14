@@ -31,11 +31,17 @@
         </activity>
         <activity android:name=".Facturar">
         </activity>
-        <activity android:name=".Cliente_Int">
+        <activity android:name=".crear_clientes.Cliente_Int">
         </activity>
-        <activity android:name=".Cliente_lista_clientes">
+        <activity android:name=".crear_clientes.Cliente_lista_clientes">
         </activity>
-        <activity android:name=".Cliente_lista_clientes_detalle">
+        <activity android:name=".crear_clientes.Cliente_lista_clientes_detalle">
+        </activity>
+        <activity android:name=".vistaBasededatos.Vista_Base_Datos">
+        </activity>
+        <activity android:name=".vistaBasededatos.Vista_BD_Cliente">
+        </activity>
+        <activity android:name=".vistaBasededatos.Vista_BD_Producto">
         </activity>
 
     </application>

@@ -1,6 +1,5 @@
 package sebastian.ing.jyc;
 
-import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import sebastian.ing.jyc.Estructuras.Producto;
+import sebastian.ing.jyc.Utilidades.ConexionSQLiteHelper;
 import sebastian.ing.jyc.Utilidades.Utilidades;
 
 /**
@@ -29,7 +29,7 @@ public class Pedido extends AppCompatActivity
     private TextView fecha;
     private ArrayList<String> comboProductos;
     private ArrayList<Producto> productoArralist;
-    private ConexionSQLiteHelper  conn;
+    private ConexionSQLiteHelper conn;
 
 
     protected void onCreate(Bundle savedInstanceState) {

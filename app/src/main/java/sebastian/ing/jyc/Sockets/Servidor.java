@@ -1,4 +1,4 @@
-package sebastian.ing.jyc;
+package sebastian.ing.jyc.Sockets;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;

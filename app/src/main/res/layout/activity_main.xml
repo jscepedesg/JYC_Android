@@ -86,8 +86,8 @@
         android:id="@+id/ingresar"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="56dp"
-        android:layout_marginTop="57dp"
+        android:layout_marginBottom="98dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/rouden"
         android:onClick="InicioSeccion"
         android:text="@string/ingresar"
@@ -114,5 +114,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_action_sync" />
+
+    <RadioButton
+        android:id="@+id/RBSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="No cerrar sesión"
+        app:layout_constraintLeft_toLeftOf="@+id/contraseña"
+        app:layout_constraintTop_toBottomOf="@+id/contraseña"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginLeft="0dp" />
 
 </android.support.constraint.ConstraintLayout>

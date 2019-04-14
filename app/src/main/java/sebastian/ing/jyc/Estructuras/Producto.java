@@ -1,6 +1,8 @@
 package sebastian.ing.jyc.Estructuras;
 
-public class Producto {
+import java.io.Serializable;
+
+public class Producto implements Serializable {
 	
 	private int cod_p;
 	private String nom_p;
