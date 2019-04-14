@@ -13,16 +13,16 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="125dp"
             android:layout_marginStart="129dp"
-            tools:layout_constraintTop_creator="1"
-            tools:layout_constraintRight_creator="1"
-            app:layout_constraintRight_toRightOf="@+id/edit_nomrazonsocial"
-            tools:layout_constraintLeft_creator="1"
             app:layout_constraintLeft_toLeftOf="@+id/lbl_diadeatencion"
-            app:layout_constraintTop_toTopOf="@+id/lbl_diadeatencion" />
+            app:layout_constraintRight_toRightOf="@+id/edit_nomrazonsocial"
+            app:layout_constraintTop_toTopOf="@+id/lbl_diadeatencion"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1" />
 
         <TextView
             android:id="@+id/lbl_diadeatencion"
