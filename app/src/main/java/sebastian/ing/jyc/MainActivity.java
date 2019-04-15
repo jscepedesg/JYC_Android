@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean estadoradioBtn;
     private static final String STRING_PREFERENCES="estado.verificacion";
     private static final String PREFERENCES_ESTADO_BOTON="estado.boton.sesion";
+//Usuario
+    private static final String STRING_PREFERENCES_USUARIO="estado.verificacion.usuario";
+    private static final String PREFERENCES_ESTADO_USUARIO="estado.usuario";
+
 
 
     public MainActivity()
@@ -102,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                         || nom.getText().toString().equalsIgnoreCase(cursor.getString(1)) && contra.getText().toString().equalsIgnoreCase(cursor.getString(0)))
                 {
                     setGuardarEstadoBoton();
+                    setGuardarUsuario(cursor.getInt(0));
                     Intent i = new Intent(this, Inicio.class);
                     startActivity(i);
                     finish();
@@ -316,5 +321,23 @@ public class MainActivity extends AppCompatActivity {
     {
         SharedPreferences preferences = c.getSharedPreferences(STRING_PREFERENCES,MODE_PRIVATE);
         preferences.edit().putBoolean(PREFERENCES_ESTADO_BOTON,b).apply();
+    }
+
+    public void setGuardarUsuario(int id)
+    {
+        Log.d("ID de bienvenida: ",String.valueOf(id));
+        SharedPreferences preferences = getSharedPreferences(STRING_PREFERENCES_USUARIO,MODE_PRIVATE);
+        preferences.edit().putInt(PREFERENCES_ESTADO_USUARIO,id).apply();
+    }
+    public static int setOptenerEstadoUsuario(Context c)
+    {
+        SharedPreferences preferences = c.getSharedPreferences(STRING_PREFERENCES_USUARIO,MODE_PRIVATE);
+        return preferences.getInt(PREFERENCES_ESTADO_USUARIO,1);
+    }
+
+    public static void setCambiarEstadoUsuario(Context c,int b)
+    {
+        SharedPreferences preferences = c.getSharedPreferences(STRING_PREFERENCES_USUARIO,MODE_PRIVATE);
+        preferences.edit().putInt(PREFERENCES_ESTADO_USUARIO,b).apply();
     }
 }

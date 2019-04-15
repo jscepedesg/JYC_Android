@@ -1,11 +1,16 @@
 package sebastian.ing.jyc;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
+import sebastian.ing.jyc.Utilidades.ConexionSQLiteHelper;
+import sebastian.ing.jyc.Utilidades.Utilidades;
 import sebastian.ing.jyc.crear_clientes.Cliente_Int;
 import sebastian.ing.jyc.vistaBasededatos.Vista_Base_Datos;
 
@@ -16,9 +21,13 @@ import sebastian.ing.jyc.vistaBasededatos.Vista_Base_Datos;
 public class Inicio extends AppCompatActivity
 {
 
+    private ConexionSQLiteHelper conn1;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
+
+        setConsultaInicioUsuario();
     }
 
 
@@ -78,4 +87,16 @@ public class Inicio extends AppCompatActivity
         finish();
     }
 
+    public void setConsultaInicioUsuario()
+    {
+        conn1 = new ConexionSQLiteHelper(this, Utilidades.DATABASE_NAME,null,Utilidades.DATABASE_VERSION);
+
+        SQLiteDatabase db = conn1.getReadableDatabase();
+        String[] parametros = {String.valueOf(MainActivity.setOptenerEstadoUsuario(Inicio.this))};
+        String[] campos = {Utilidades.CAMPO_ID,Utilidades.CAMPO_NOMBRE};
+
+        Cursor cursor = db.query(Utilidades.TABLA_VENDEDOR,campos,Utilidades.CAMPO_ID+"=?",parametros,null,null,null);
+        cursor.moveToFirst();
+        Toast.makeText(getApplicationContext(),"Bienvenido: "+cursor.getString(1),Toast.LENGTH_SHORT).show();
+    }
 }
