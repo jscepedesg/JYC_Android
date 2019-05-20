@@ -12,6 +12,7 @@ import android.widget.Toast;
 import sebastian.ing.jyc.Utilidades.ConexionSQLiteHelper;
 import sebastian.ing.jyc.Utilidades.Utilidades;
 import sebastian.ing.jyc.crear_clientes.Cliente_Int;
+import sebastian.ing.jyc.pedidos.Pedido;
 import sebastian.ing.jyc.vistaBasededatos.Vista_Base_Datos;
 
 /**

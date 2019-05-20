@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean estadoradioBtn;
     private static final String STRING_PREFERENCES="estado.verificacion";
     private static final String PREFERENCES_ESTADO_BOTON="estado.boton.sesion";
-//Usuario
+    //Usuario
     private static final String STRING_PREFERENCES_USUARIO="estado.verificacion.usuario";
     private static final String PREFERENCES_ESTADO_USUARIO="estado.usuario";
 

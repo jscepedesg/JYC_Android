@@ -27,6 +27,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper
         db.execSQL(Utilidades.CREAR_TABLA_VENDEDOR);
         //Base de datos provicional
         db.execSQL(Utilidades.CREAR_TABLA_CLIENTE_PROVICIONAL);
+        db.execSQL(Utilidades.CREAR_TABLA_REGISTRO);
     }
 
     @Override
@@ -39,6 +40,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_VENDEDOR);
         //Base de datos provicional
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_CLIENTE_PROVICIONAL);
+        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_REGISTRO);
         onCreate(db);
     }
 }

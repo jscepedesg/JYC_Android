@@ -13,4 +13,5 @@ public class Facturar extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.facturar);
     }
+
 }
